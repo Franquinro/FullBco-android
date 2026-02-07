@@ -335,6 +335,7 @@ public class FullscreenActivity extends FragmentActivity {
     // ----------------------------------------------------------------------------
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         if (vistaweb.canGoBack()) {
             vistaweb.goBack();
         } else {
