@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/inicio"
+        android:title="Ir a Inicio" />
+    <item
+        android:id="@+id/personales"
+        android:title="Menú Personalizado" />
+    <item
+        android:id="@+id/configuracion"
+        android:title="Configuración" />
+
+    <item
+        android:id="@+id/ajuste_pantalla"
+        android:title="Ajuste Pantalla" />
+
+    <item
+        android:id="@+id/salir"
+        android:title="Salir" />
+
+    <!-- IDs para Modo Trend (se manejan dinámicamente) -->
+    <item android:id="@+id/modo_trend_toggle" android:visible="false" android:title="M" />
+    <item android:id="@+id/modo_trend_generar" android:visible="false" android:title="G" />
+    <item android:id="@+id/modo_trend_cancelar" android:visible="false" android:title="C" />
+</menu>

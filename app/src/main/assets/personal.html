@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Personalizado</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <h3>Listado Pantallas</h3>
+    <div id="listaEnlaces"></div>
+
+    <button class="btn btn-primary mb-3" onclick="mostrarFormularioAgregar()">Añadir URL</button>
+
+    <!-- Formulario para añadir o editar -->
+    <div id="formulario-url" style="display: none;">
+        <div class="form-group">
+            <label for="titulo">Título:</label>
+            <input type="text" class="form-control" id="titulo">
+        </div>
+        <div class="form-group">
+            <label for="url">URL:</label>
+            <input type="text" class="form-control" id="url">
+        </div>
+        <button class="btn btn-success" onclick="guardarUrl()">Guardar</button>
+        <button class="btn btn-secondary" onclick="ocultarFormulario()">Cancelar</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      cargarEnlaces();
+    });
+    let editando = false;
+    let indiceEditando = -1;
+
+    function mostrarFormularioAgregar() {
+      document.getElementById('formulario-url').style.display = 'block';
+      document.getElementById('titulo').value = '';
+      document.getElementById('url').value = '';
+      editando = false;
+      indiceEditando = -1;
+    }
+
+    function ocultarFormulario() {
+      document.getElementById('formulario-url').style.display = 'none';
+    }
+
+    function guardarUrl() {
+      const titulo = document.getElementById('titulo').value;
+      const url = document.getElementById('url').value;
+      if (editando) {
+        // Actualizar el elemento existente
+        Android.actualizarEnlace(indiceEditando, titulo, url);
+        alert('Actualizar URL: ' + titulo + ' - ' + url);
+      } else {
+        // Añadir un nuevo elemento
+        Android.guardarEnlace(titulo, url);
+        alert('Guardar URL: ' + titulo + ' - ' + url);
+      }
+      ocultarFormulario();
+      cargarEnlaces();
+    }
+
+    function cargarEnlaces() {
+      try {
+        var enlacesJSON = Android.obtenerEnlaces();
+        var enlaces = JSON.parse(enlacesJSON);
+        var contenedor = document.getElementById('listaEnlaces');
+        contenedor.innerHTML = ''; // Limpiar contenedor existente
+        Object.keys(enlaces).forEach(function(titulo, indice) {
+          var url = enlaces[titulo];
+          // Crear el elemento contenedor para cada enlace
+          var enlaceElem = document.createElement('div');
+          enlaceElem.className = 'd-flex align-items-center justify-content-between my-2';
+          // HTML para el título y el enlace
+          enlaceElem.innerHTML = '<p class="mb-0"><a href="' + url + '" target="_blank">' + titulo + '</a></p>';
+          // Dentro de cargarEnlaces, modifica los botones así:
+          var botones = '<button class="btn btn-primary btn-sm mr-2" onclick="editarEnlace(\'' + titulo + '\')">Editar</button>' +
+              '<button class="btn btn-danger btn-sm" onclick="borrarEnlace(\'' + titulo + '\')">Borrar</button>';
+          // Agregar botones al elemento
+          enlaceElem.insertAdjacentHTML('beforeend', botones);
+          contenedor.appendChild(enlaceElem);
+        });
+      } catch (e) {
+        console.error("Error al cargar enlaces: ", e);
+      }
+    }
+
+    function editarEnlace(titulo) {
+    var url = prompt("Edita la URL para " + titulo + ":", AndroidInterface.obtenerUrlPorTitulo(titulo));
+    if (url !== null) {
+        Android.editarEnlace(titulo, titulo, url); // Aquí, estamos asumiendo que el título se mantiene igual
+        cargarEnlaces(); // Recargar la lista para reflejar los cambios
+    }
+    }
+
+
+    function borrarEnlace(titulo) {
+        Android.confirmarBorrado(titulo);
+        cargarEnlaces();
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+
+# Firma de APK (SENSIBLE)
+*.jks
+*.keystore
+*.p12
+
+# Archivos temporales de Gradle y logs
+.gradle/
+build/
+*.log
+
+# Archivos de configuración de usuario de Android Studio
+.idea/shelf/
+.idea/workspace.xml
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+
+# Archivos de Google Services si se usaran
+# google-services.json

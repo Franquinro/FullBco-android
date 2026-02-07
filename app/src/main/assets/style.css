@@ -1,0 +1,11 @@
+.toolbar-show {
+    height: 0px !important;
+}
+
+rect#backgroundRectangle {
+    fill: #5a5a25 !important;
+}
+
+.displayContainer {
+	background-color: rgb(165, 51, 51) !important;
+}

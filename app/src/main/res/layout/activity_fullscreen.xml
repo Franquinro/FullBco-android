@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc">
+
+
+        <WebView
+            android:id="@+id/vistaweb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+        </WebView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/boton_zoom"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/black_overlay"
+                    android:src="@drawable/ic_action_zoom"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:src="@drawable/ic_action_zoom" />
+
+                <ImageView
+                    android:id="@+id/boton_menu"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@color/black_overlay"
+                    android:src="@drawable/baseline_menu_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/ajuste_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="#5400436D"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/black_overlay">
+
+                                <TextView
+                                    android:id="@+id/textView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Ajuste"
+                                    android:textAlignment="center"
+                                    tools:layout_editor_absoluteX="849dp"
+                                    tools:layout_editor_absoluteY="10dp" />
+
+                                <SeekBar
+                                    android:id="@+id/seekBarTop"
+                                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="50dp"
+                                    android:layout_marginTop="24dp"
+                                    android:layout_marginEnd="50dp"
+                                    android:layout_marginBottom="16dp"
+                                    android:max="300"
+                                    android:progress="80"
+                                    app:layout_constraintBottom_toTopOf="@+id/seekBarBottom"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <SeekBar
+                                    android:id="@+id/seekBarBottom"
+                                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="50dp"
+                                    android:layout_marginEnd="50dp"
+                                    android:layout_marginBottom="16dp"
+                                    android:max="300"
+                                    android:progress="80"
+                                    app:layout_constraintBottom_toTopOf="@+id/botonHide"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent" />
+
+                                <Button
+                                    android:id="@+id/botonHide"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:minWidth="100dp"
+                                    android:text="Ocultar"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>
